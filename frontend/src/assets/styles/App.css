@@ -1,0 +1,72 @@
+.page {
+    height: 100vh;
+}
+
+.page::before {
+    content: "";
+    position: fixed;
+    width: 300%;
+    height: 100%;
+    background: #212529;
+    left: -180%;
+    top: 40%;
+    transform: translatex(-50%) skew(0, -10deg);
+    border-radius: 50%;
+    z-index: -1;
+    animation: waving 7s ease-in-out infinite alternate;
+}
+
+@keyframes waving {
+    from {
+        transform: translatex(50%) skew(0, -10deg);
+    }
+
+    to {
+        transform: translatex(50%) skew(0, 0);
+    }
+}
+
+.card {
+    position: absolute;
+    width: 75%;
+    height: 33rem;
+    top: 21rem;
+    left: 50%;
+    background: white;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    box-shadow: #00000075 -10px 10px 8px 0px;
+    padding: 20px;
+}
+
+.data-section {
+    overflow-y: scroll;
+    max-height: 25rem;
+}
+
+tbody {
+    height: 100px;
+    overflow-y: scroll;
+}
+
+.spinner-border{
+    position: absolute;
+    top: 50%;
+    left: 47%;
+}
+
+.hidden{
+    display: none;
+}
+.show{
+    display: block;
+}
+.message_blank{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.completion-btn{
+    margin: 50% auto;
+}
