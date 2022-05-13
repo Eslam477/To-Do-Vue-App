@@ -22,7 +22,7 @@
                                 <th>{{ task.titel }}</th>
                                 <th>{{ task.description }}</th>
                                 <th>{{ Date(task.createdAt) }}</th>
-                                <th><button class="btn btn-primary completion-btn">Done</button></th>
+                                <th><button class="btn btn-success completion-btn">Done</button></th>
                             </tr>
                         </tbody>
                     </table>

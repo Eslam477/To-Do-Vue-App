@@ -21,7 +21,8 @@ router.post('/add', async (req, res) => {
     await tasks.insertOne({
         titel: req.body.titel,
         description: req.body.description,
-        createdAt: new Date()
+        createdAt: new Date(),
+        complete: false
     })
 
     res.status(201).send()
