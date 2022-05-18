@@ -16,13 +16,13 @@
                                 <th>completion</th>
                             </tr>
                         </thead>
-                        <tbody v-for="(task, index) in tasks" :key="task._id" class="table-striped">
-                            <tr>
+                        <tbody class="table-striped">
+                            <tr v-for="(task, index) in tasks" :key="task._id">
                                 <th>{{ index + 1 }}</th>
                                 <th>{{ task.titel }}</th>
                                 <th>{{ task.description }}</th>
                                 <th>{{ Date(task.createdAt) }}</th>
-                                <th><button class="btn btn-success completion-btn">Done</button></th>
+                                <th><button class="btn btn-success completion-btn" @click="complete_task(task._id)">Done</button></th>
                             </tr>
                         </tbody>
                     </table>
@@ -66,6 +66,11 @@ export default {
                     alert(`undefined error code: ${err.response.status}`)
                 }
             });
+        },
+        complete_task(id){
+            axios.post(`http://localhost:5000/api/tasks/beAnAchievements/${id}`).then(()=>{
+                this.$router.push({name: 'achievements'})
+            })
         }
     },
     created() {

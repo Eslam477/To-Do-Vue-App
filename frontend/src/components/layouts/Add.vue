@@ -33,7 +33,12 @@ methods:{
             axios.post('http://localhost:5000/api/tasks/add', {
                 titel: this.task_titel,
                 description: this.task_description
-            }).then((response)=>{console.log(response.status);})
+            }).then((response)=>{
+                console.log(response.status)
+                if(response.status == 201){
+                    this.$router.push({name:'ToDo'})
+                }
+                })
         }else{
             console.error('Something went wrong')
         }

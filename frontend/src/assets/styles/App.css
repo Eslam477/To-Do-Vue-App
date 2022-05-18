@@ -70,3 +70,8 @@ tbody {
 .completion-btn{
     margin: 50% auto;
 }
+
+tr{
+    text-overflow: ellipsis;
+    max-width: 50px;
+}

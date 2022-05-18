@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/App.css';
 import Nav from './components/nav.vue'
 export default {

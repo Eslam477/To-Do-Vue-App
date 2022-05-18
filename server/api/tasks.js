@@ -1,6 +1,5 @@
 const express = require('express');
 const mongodb = require('mongodb');
-
 const router = express.Router();
 
 //get tasks
@@ -15,6 +14,20 @@ router.get('/get', async (req, res) => {
         res.status(502).send()
     }
 })
+
+//get Achievements
+router.get('/achievements', async (req, res) => {
+    const tasks = await loade_DB_collction()
+
+    const data = await tasks.find({ complete: true }).toArray();
+
+    if (data.length > 0) {
+        res.json(data);
+    } else {
+        res.status(502).send()
+    }
+})
+
 //add tasks
 router.post('/add', async (req, res) => {
     const tasks = await loade_DB_collction()
@@ -24,8 +37,20 @@ router.post('/add', async (req, res) => {
         createdAt: new Date(),
         complete: false
     })
-
     res.status(201).send()
+})
+
+//Update task data to add it to the list of achievements
+router.post('/beAnAchievements/:id', async (req, res) => {
+    const tasks = await loade_DB_collction()
+    console.log(req.params.id);
+    await tasks.updateOne({ _id: new mongodb.ObjectId(req.params.id) }, { $set: { complete: true } }, function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+    })
+    res.status(200).send()
+    console.log(req.params.id);
+
 })
 
 //delete tasks
